@@ -1,0 +1,35 @@
+user->browser:
+note left of browser
+kayttaja kirjottaa osoiteriville
+fullstack-exampleapp.herokuapp.com/notes, kirjoittaa
+uuden muistiinpanon, ja painaa Talleta-nappia.
+end note
+browser->server: POST fullstack-exampleapp.herokuapp.com/new_note
+note left of server
+Serveri tallentaa POST-pyynnön mukana tulleen uuden muistiinpanon,
+ja pyytää selainta lataamaan sivun uudelleen.
+end note
+server->browser: status 302, redirection
+browser->server: GET fullstack-exampleapp.herokuapp.com/notes
+server->browser: Status 200, HTML-koodi
+note left of server
+HTML-koodissa kehoitus ladata CSS-tiedosto
+end note
+browser->server: GET https://fullstack-exampleapp.herokuapp.com/main.css
+server->browser: Status 200, CSS-tiedosto main.css
+note left of server
+HTML-koodissa kehoitus ladata main.js -tiedosto
+end note
+browser->server: GET https://fullstack-exampleapp.herokuapp.com/main.js
+server->browser: Status 200, JavaScript-tiedosto main.js
+note right of browser
+Selain suorittaa JavaScript-koodin. Koodi sisältää kehoituksen hakea
+data.json -tiedosto.
+end note
+browser->server: GET https://fullstack-exampleapp.herokuapp.com/data.json
+server->browser: Status 200: JSON-tiedosto data.json
+note left of browser
+Selain tulkitsee data.json -tiedostossa olleet muistinpanot,
+ja näyttää muistinpanosivuston muistiinpanoineen
+käyttäjälle.
+end note

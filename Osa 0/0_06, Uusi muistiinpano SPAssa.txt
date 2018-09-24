@@ -1,0 +1,16 @@
+user->browser:
+note left of browser
+kayttaja kirjottaa osoiteriville
+fullstack-exampleapp.herokuapp.com/spa, kirjoittaa
+uuden muistiinpanon, ja painaa Talleta-nappia.
+end note
+browser->server: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+note right of browser
+Selain lisää kirjoitetun muistiinpanon omalle muistiinpanolistalleen,
+piirtää muistiinpanot uudelleen ruudulle ja lähettää muistiinpanon
+serverille.
+end note
+note left of server
+Serveri tallentaa POST-pyynnön mukana tulleen JSON-muotoisen muistiinpanon.
+end note
+server->browser: status 201, created

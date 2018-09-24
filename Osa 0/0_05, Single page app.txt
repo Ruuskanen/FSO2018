@@ -1,0 +1,28 @@
+user->browser:
+note left of browser
+Käyttäjä kirjoittaa osoiteriville
+https://fullstack-exampleapp.herokuapp.com/spa
+end note
+browser->server: GET https://fullstack-exampleapp.herokuapp.com/spa
+server->browser: Status 200, HTML-koodi
+note left of server
+HTML-koodissa kehoitus ladata CSS-tiedosto
+end note
+browser->server: GET https://fullstack-exampleapp.herokuapp.com/main.css
+server->browser: Status 200, CSS-tiedosto main.css
+note left of server
+HTML-koodissa kehoitus ladata main.js -tiedosto
+end note
+browser->server: GET https://fullstack-exampleapp.herokuapp.com/main.js
+server->browser: Status 200, JavaScript-tiedosto main.js
+note right of browser
+Selain suorittaa JavaScript-koodin. Koodi sisältää kehoituksen hakea
+data.json -tiedosto.
+end note
+browser->server: GET https://fullstack-exampleapp.herokuapp.com/data.json
+server->browser: Status 200: JSON-tiedosto data.json
+note left of browser
+Selain tulkitsee data.json -tiedostossa olleet muistinpanot,
+ja näyttää muistinpanosivuston muistiinpanoineen
+käyttäjälle.
+end note
